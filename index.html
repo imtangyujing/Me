@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的个人网站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a href="#" class="logo">MY SITE</a>
+        <div class="nav-links">
+          <a href="#about">简介</a>
+          <a href="#works">作品</a>
+          <a href="#gallery">图片</a>
+          <a href="#contact">联系</a>
+        </div>
+      </nav>
+
+      <div class="container hero-content fade-in-up">
+        <p class="tag">欢迎来到我的小世界</p>
+        <h1>你好，我是你的名字</h1>
+        <p class="subtitle">
+          这是我的第一版个人网站。我会在这里分享我的简介、作品和喜欢的图片。
+        </p>
+        <a class="btn" href="#works">先看我的作品</a>
+      </div>
+      <div class="hero-glow" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <section id="about" class="section container fade-in-up">
+        <h2>个人简介</h2>
+        <p>
+          我正在学习做网站，喜欢把想法变成页面。这个网站会持续更新，慢慢变得更完整、更好看。
+        </p>
+      </section>
+
+      <section id="works" class="section container fade-in-up">
+        <h2>我的作品</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>作品 01</h3>
+            <p>这里放你的第一个作品介绍，比如小程序、设计稿或练习项目。</p>
+            <a href="#">查看详情</a>
+          </article>
+          <article class="card">
+            <h3>作品 02</h3>
+            <p>这里放你的第二个作品介绍，后续我们可以做成可点击的项目页。</p>
+            <a href="#">查看详情</a>
+          </article>
+          <article class="card">
+            <h3>作品 03</h3>
+            <p>这里放你的第三个作品介绍，支持放 GitHub、视频或图片链接。</p>
+            <a href="#">查看详情</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="gallery" class="section container fade-in-up">
+        <h2>图片墙</h2>
+        <div class="gallery">
+          <div class="tile">图片 1</div>
+          <div class="tile">图片 2</div>
+          <div class="tile">图片 3</div>
+          <div class="tile">图片 4</div>
+          <div class="tile">图片 5</div>
+          <div class="tile">图片 6</div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="footer">
+      <p>联系我：youremail@example.com</p>
+      <p>© 2026 你的名字</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

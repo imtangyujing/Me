@@ -1,3 +1,5 @@
+const FALLBACK_EMAIL = "tangyujing2023@gmail.com";
+
 function createLink(href, text) {
   const link = document.createElement("a");
   link.href = href || "#";
@@ -9,6 +11,29 @@ function createLink(href, text) {
   }
 
   return link;
+}
+
+function findEmailAddress(contactLinks) {
+  const emailRegex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+
+  for (const item of contactLinks) {
+    const url = (item?.url || "").trim();
+    if (url.toLowerCase().startsWith("mailto:")) {
+      const email = url.replace(/^mailto:/i, "").trim();
+      if (emailRegex.test(email)) return email;
+    }
+  }
+
+  for (const item of contactLinks) {
+    const url = (item?.url || "").trim();
+    const name = (item?.name || "").trim();
+    const urlMatch = url.match(emailRegex);
+    if (urlMatch) return urlMatch[0];
+    const nameMatch = name.match(emailRegex);
+    if (nameMatch) return nameMatch[0];
+  }
+
+  return "";
 }
 
 function splitParagraphs(text) {
@@ -88,16 +113,27 @@ function renderSite() {
   });
 
   document.getElementById("contact-title").textContent = data.contact.title || "联系方式";
-  document.getElementById("contact-intro").textContent = data.contact.intro || "欢迎交流合作";
   document.getElementById("copyright").textContent = data.contact.copyright || "";
+  const emailRow = document.getElementById("contact-email-row");
+  const emailValue = document.getElementById("contact-email-value");
+  emailRow.hidden = true;
+  emailValue.textContent = "";
 
   const links = document.getElementById("social-links");
   links.innerHTML = "";
-  (data.contact.links || [])
+  const contactLinks = data.contact.links || [];
+  const email = findEmailAddress(contactLinks) || FALLBACK_EMAIL;
+  emailRow.hidden = false;
+  emailValue.textContent = email;
+
+  contactLinks
     .filter((item) => {
       const name = (item?.name || "").trim();
       const url = (item?.url || "").trim();
-      return Boolean(name && url && name !== "链接");
+      if (!name || !url) return false;
+      if (name === "链接") return false;
+      if (url.startsWith("mailto:")) return false;
+      return true;
     })
     .forEach((item) => {
       links.append(createLink(item.url, item.name));

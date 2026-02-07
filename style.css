@@ -269,6 +269,30 @@ body {
   line-height: 1.75;
 }
 
+.email-row {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.email-label {
+  color: #2f3b52;
+  font-weight: 600;
+}
+
+.email-value {
+  color: #2f3b52;
+  font-family: "Noto Sans SC", sans-serif;
+  background: #f3f4f7;
+  border: 1px solid #d9dde5;
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: inline-block;
+  min-width: 0;
+}
+
 .fade-in-up {
   opacity: 0;
   transform: translateY(16px);

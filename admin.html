@@ -22,54 +22,52 @@
         </div>
       </header>
 
-      <p class="tip">填完后点“保存全部”，主页刷新后立即生效。</p>
+      <p class="tip">你可以直接在这里改文案，也可以给作品/经历/社媒链接做新增和删除。</p>
 
       <form id="editor-form">
         <section class="panel">
           <h2>基础信息</h2>
           <label>网站标题<input id="meta-title" type="text" /></label>
-          <label>Logo 文案<input id="meta-logo" type="text" /></label>
-          <label>欢迎标签<input id="hero-tag" type="text" /></label>
           <label>首页主标题<input id="hero-name" type="text" /></label>
-          <label>一句话介绍<textarea id="hero-subtitle" rows="2"></textarea></label>
-          <label>按钮文案<input id="hero-cta" type="text" /></label>
+          <label>一句短标签（显示在左侧名字下面）<input id="hero-tag" type="text" /></label>
+          <label>副标题（用于数据备份）<textarea id="hero-subtitle" rows="2"></textarea></label>
+          <label>Logo 文案（用于数据备份）<input id="meta-logo" type="text" /></label>
+          <label>按钮文案（用于数据备份）<input id="hero-cta" type="text" /></label>
         </section>
 
         <section class="panel">
           <h2>个人简介</h2>
           <label>标题<input id="about-title" type="text" /></label>
-          <label>内容<textarea id="about-text" rows="5"></textarea></label>
+          <label>内容<textarea id="about-text" rows="6"></textarea></label>
         </section>
 
         <section class="panel">
-          <h2>作品（3条）</h2>
+          <div class="panel-head">
+            <h2>作品</h2>
+            <button id="add-work-btn" type="button" class="add-btn">+ 新增作品</button>
+          </div>
           <label>模块标题<input id="works-title" type="text" /></label>
-
-          <div class="group"><h3>作品 1</h3><label>标题<input id="work-1-title" type="text" /></label><label>简介<textarea id="work-1-desc" rows="2"></textarea></label><label>链接<input id="work-1-url" type="url" /></label></div>
-          <div class="group"><h3>作品 2</h3><label>标题<input id="work-2-title" type="text" /></label><label>简介<textarea id="work-2-desc" rows="2"></textarea></label><label>链接<input id="work-2-url" type="url" /></label></div>
-          <div class="group"><h3>作品 3</h3><label>标题<input id="work-3-title" type="text" /></label><label>简介<textarea id="work-3-desc" rows="2"></textarea></label><label>链接<input id="work-3-url" type="url" /></label></div>
+          <div id="works-items" class="dynamic-list"></div>
         </section>
 
         <section class="panel">
-          <h2>经历时间线（3条）</h2>
+          <div class="panel-head">
+            <h2>经历时间线</h2>
+            <button id="add-timeline-btn" type="button" class="add-btn">+ 新增经历</button>
+          </div>
           <label>模块标题<input id="timeline-title" type="text" /></label>
-
-          <div class="group"><h3>经历 1</h3><label>时间<input id="timeline-1-time" type="text" /></label><label>标题<input id="timeline-1-title" type="text" /></label><label>描述<textarea id="timeline-1-desc" rows="2"></textarea></label></div>
-          <div class="group"><h3>经历 2</h3><label>时间<input id="timeline-2-time" type="text" /></label><label>标题<input id="timeline-2-title" type="text" /></label><label>描述<textarea id="timeline-2-desc" rows="2"></textarea></label></div>
-          <div class="group"><h3>经历 3</h3><label>时间<input id="timeline-3-time" type="text" /></label><label>标题<input id="timeline-3-title" type="text" /></label><label>描述<textarea id="timeline-3-desc" rows="2"></textarea></label></div>
+          <div id="timeline-items" class="dynamic-list"></div>
         </section>
 
         <section class="panel">
-          <h2>联系方式</h2>
+          <div class="panel-head">
+            <h2>联系方式</h2>
+            <button id="add-social-btn" type="button" class="add-btn">+ 新增社媒链接</button>
+          </div>
           <label>标题<input id="contact-title" type="text" /></label>
-          <label>说明文案<input id="contact-intro" type="text" /></label>
+          <label>邮箱<input id="contact-email" type="email" placeholder="name@example.com" /></label>
           <label>版权文案<input id="contact-copyright" type="text" /></label>
-
-          <div class="group"><h3>链接 1</h3><label>名称<input id="contact-1-name" type="text" /></label><label>地址<input id="contact-1-url" type="text" /></label></div>
-          <div class="group"><h3>链接 2</h3><label>名称<input id="contact-2-name" type="text" /></label><label>地址<input id="contact-2-url" type="text" /></label></div>
-          <div class="group"><h3>链接 3</h3><label>名称<input id="contact-3-name" type="text" /></label><label>地址<input id="contact-3-url" type="text" /></label></div>
-          <div class="group"><h3>链接 4</h3><label>名称<input id="contact-4-name" type="text" /></label><label>地址<input id="contact-4-url" type="text" /></label></div>
-          <div class="group"><h3>链接 5</h3><label>名称<input id="contact-5-name" type="text" /></label><label>地址<input id="contact-5-url" type="text" /></label></div>
+          <div id="social-items" class="dynamic-list"></div>
         </section>
 
         <section class="panel">

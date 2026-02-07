@@ -27,7 +27,7 @@ jobs:
       - name: Build static bundle
         run: |
           mkdir -p dist
-          cp -v index.html style.css script.js site-data.js admin.html admin.css admin.js avatar.png dist/
+          cp -v index.html style.css script.js site-data.js avatar.png dist/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

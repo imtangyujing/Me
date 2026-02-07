@@ -35,6 +35,13 @@ body {
   gap: 12px;
 }
 
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
 h1,
 h2,
 h3 {
@@ -75,6 +82,13 @@ h3 {
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 label {
@@ -119,6 +133,17 @@ button,
 
 .save {
   background: linear-gradient(120deg, rgba(144, 255, 229, 0.32), rgba(166, 144, 255, 0.32));
+}
+
+.add-btn {
+  border-color: rgba(144, 255, 229, 0.4);
+  color: #d8fff5;
+}
+
+.remove-btn {
+  border-color: rgba(255, 141, 158, 0.4);
+  color: #ffd6dd;
+  padding: 6px 10px;
 }
 
 .danger {

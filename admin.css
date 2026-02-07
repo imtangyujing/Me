@@ -1,0 +1,151 @@
+:root {
+  --bg: #090a0e;
+  --panel: #121420;
+  --panel-2: #171a29;
+  --text: #eef0f7;
+  --muted: #9da6bc;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #90ffe5;
+  --danger: #ff8d9e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans SC", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(144, 255, 229, 0.12), transparent 30%),
+    radial-gradient(circle at 95% 25%, rgba(172, 151, 255, 0.14), transparent 35%),
+    var(--bg);
+}
+
+.editor {
+  width: min(980px, 92vw);
+  margin: 24px auto 44px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(34px, 5vw, 44px);
+}
+
+h2 {
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+
+h3 {
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.tip,
+.small {
+  color: var(--muted);
+}
+
+.panel {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+}
+
+.group {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  color: #dbe0ee;
+  font-size: 14px;
+}
+
+input,
+textarea,
+button,
+.ghost {
+  width: 100%;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 68px;
+}
+
+button,
+.ghost {
+  width: auto;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.actions,
+.inline-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.save {
+  background: linear-gradient(120deg, rgba(144, 255, 229, 0.32), rgba(166, 144, 255, 0.32));
+}
+
+.danger {
+  border-color: rgba(255, 141, 158, 0.45);
+  color: #ffd6dd;
+}
+
+.sticky-submit {
+  position: sticky;
+  bottom: 12px;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(8, 10, 16, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+#status {
+  margin: 8px 0 0;
+  color: var(--accent);
+  min-height: 22px;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

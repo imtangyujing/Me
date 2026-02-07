@@ -72,10 +72,12 @@
 
         <section class="panel">
           <h2>导入导出</h2>
-          <p class="small">可以导出为 JSON 备份，以后再导入恢复。</p>
+          <p class="small">可以导出 JSON 备份，也可以一键生成可发布的 site-data.js 代码。</p>
           <div class="inline-actions">
             <button id="export-btn" type="button">导出 JSON</button>
             <button id="import-btn" type="button">从 JSON 导入</button>
+            <button id="build-site-data-btn" type="button">生成 site-data.js</button>
+            <button id="copy-site-data-btn" type="button">复制 site-data.js</button>
           </div>
           <textarea id="json-area" rows="8" placeholder="导出的 JSON 会显示在这里，或把 JSON 粘贴进来后点导入。"></textarea>
         </section>

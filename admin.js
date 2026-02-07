@@ -77,6 +77,76 @@ function normalizeEmail(email) {
   return `mailto:${value}`;
 }
 
+function buildSiteDataFile(data) {
+  const payload = JSON.stringify(data, null, 2);
+  return `const STORAGE_KEY = "me-site-data-v1";
+
+const DEFAULT_SITE_DATA = ${payload};
+
+function clone(data) {
+  return JSON.parse(JSON.stringify(data));
+}
+
+function getSiteData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return clone(DEFAULT_SITE_DATA);
+    const parsed = JSON.parse(raw);
+    return mergeWithDefault(parsed);
+  } catch {
+    return clone(DEFAULT_SITE_DATA);
+  }
+}
+
+function saveSiteData(data) {
+  const merged = mergeWithDefault(data);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+  return merged;
+}
+
+function resetSiteData() {
+  localStorage.removeItem(STORAGE_KEY);
+  return clone(DEFAULT_SITE_DATA);
+}
+
+function mergeWithDefault(data) {
+  const merged = clone(DEFAULT_SITE_DATA);
+  if (!data || typeof data !== "object") return merged;
+
+  merged.meta = { ...merged.meta, ...(data.meta || {}) };
+  merged.hero = { ...merged.hero, ...(data.hero || {}) };
+  merged.about = { ...merged.about, ...(data.about || {}) };
+  merged.works = { ...merged.works, ...(data.works || {}) };
+  merged.timeline = { ...merged.timeline, ...(data.timeline || {}) };
+  merged.contact = { ...merged.contact, ...(data.contact || {}) };
+
+  if (Array.isArray(data.works?.items)) merged.works.items = data.works.items;
+  if (Array.isArray(data.timeline?.items)) merged.timeline.items = data.timeline.items;
+  if (Array.isArray(data.contact?.links)) merged.contact.links = data.contact.links;
+
+  return merged;
+}
+
+window.SiteDataStore = {
+  STORAGE_KEY,
+  DEFAULT_SITE_DATA,
+  getSiteData,
+  saveSiteData,
+  resetSiteData,
+};`;
+}
+
+async function copyText(text) {
+  if (!text) return false;
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {}
+  return false;
+}
+
 function renderWorks(items) {
   const container = byId("works-items");
   container.innerHTML = "";
@@ -288,6 +358,22 @@ function init() {
     } catch {
       setStatus("导入失败：JSON 格式不正确。");
     }
+  });
+
+  byId("build-site-data-btn").addEventListener("click", () => {
+    const code = buildSiteDataFile(collectFormData());
+    byId("json-area").value = code;
+    setStatus("已生成 site-data.js 代码。复制后覆盖 site-data.js 再 push 即可发布。");
+  });
+
+  byId("copy-site-data-btn").addEventListener("click", async () => {
+    const area = byId("json-area");
+    if (!area.value.trim()) {
+      setStatus("请先点击“生成 site-data.js”。");
+      return;
+    }
+    const ok = await copyText(area.value);
+    setStatus(ok ? "已复制 site-data.js 代码。" : "复制失败，请手动复制文本框内容。");
   });
 }
 
